@@ -25,6 +25,36 @@ class tester
         //Teste CircunferenceCalc 
         course.CircunferenceCalc(5.0m);
         */
-        var course2 = new Course02()
+        var course2 = new Course02();
+
+        /*/Teste BalanceAnalysis
+        course2.BalanceAnalysis(-26.75m);
+
+        //Teste ProductClassification 
+        course2.ProductClassification();
+
+        //Teste StuentAvaliation 
+        course2.StuentAvaliation();
+
+        //Teste CredentialValidation 
+        course2.CredentialValidation();
+
+        //Teste EtharialClassification 
+        course2.EtharialClassification();
+
+        //Teste Calculator 
+        course2.Calculator();
+
+        //Teste Greetings 
+        course2.Greetings();
+
+        //Teste CodeRewards
+        course2.CodeRewards();
+
+        //Teste BookClassification 
+        course2.BookClassification();
+
+        //Teste AutenticationAcess */
+        course2.AutenticationAcess();
     }
 }
