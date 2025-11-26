@@ -349,3 +349,92 @@ class Course02
 
     }
 }
+
+class Course03
+{
+    public void Donations()
+    {
+        double[] valuesOfDonations = { 103.54, 259.72, 82.16, 154.87, 364.45, 14.49 };
+        double totalDonations = 0;
+        foreach (double value in valuesOfDonations)
+        {
+            totalDonations += value;
+        }
+        Console.WriteLine($"Total donations: {totalDonations}");
+    }
+
+    public void EventParticipants()
+    {
+        string[] names = new string[] { "Fernanda", "Eduardo", "Gustavo", "Carolina", "Alice", "Bruno", "Daniel" };
+        Array.Sort(names);
+
+        Console.WriteLine($"The third name in the list is: {names[2]}");
+    }
+
+    public void SecretPassword()
+    {
+        int[] numbers = new int[] { 5, 42, 8, 11, 23, 1, 14, 30, 19, 27, 36, 2, 50, 7, 18, 9 };
+        int position1 = numbers[8];
+        int position2 = numbers[1];
+        int position3 = numbers[13];
+        Console.WriteLine($"Padlock combination: {position1}-{position2}-{position3}");
+    }
+
+    public void GameScore()
+    {
+        HashSet<int> scores = new HashSet<int>();
+        scores.Add(150);
+        scores.Add(90);
+        scores.Add(200);
+        scores.Add(120);
+        scores.Add(150);
+        scores.Add(80);
+        scores.Add(180);
+        scores.Add(200);
+
+        List<int> orderScore = scores.OrderBy(orderScore => orderScore).ToList();
+
+        Console.WriteLine("Unique scores in ascending order:");
+        foreach (int score in orderScore) { Console.WriteLine(score); }
+    }
+
+    public void SecretMessage()
+    {
+        List<char> codeSecret = new List<char> { 'o', 'd', 'n', 'u', 'm', ' ', 'á', 'l', 'o' };
+
+        codeSecret.Reverse();
+
+        foreach (char code in codeSecret) { Console.WriteLine(code); };
+    }
+
+    public void SorteioBeneficiente()
+    {
+        List<string> nomes = new List<string> { "Ana", "Carlos", "Mariana", "João", "Lúcia" };
+        Console.WriteLine($"Lista original:\n{string.Join(",", nomes)}\n");
+
+        nomes.Sort();
+        Console.WriteLine($"Após Sort (ordem alfabética):\n{string.Join(",", nomes)}\n");
+
+        nomes.Reverse();
+        Console.WriteLine($"Após Reverse (ordem invertida):\n{string.Join(",", nomes)}\n");
+        
+        string nomeSalvo = nomes[0];
+        nomes.Remove(nomes[0]);
+        nomes.Add(nomeSalvo);
+        Console.WriteLine($"Após remover o primeiro e adicioná-lo no fim:\n{string.Join(",", nomes)}\n");
+
+        Console.WriteLine($"Pessoa sorteada foi: {nomes[3]}");
+    }
+
+    public void ListaDeProdutos()
+    {
+        List<string> produtosPrincipal = new List<string> { "Mouse", "Teclado", "Monitor", "Joystick"};
+        List<string> produtosSecundaria = new List<string> { "Headset", "Webcam", "Smartphone", "Mousepad" };
+
+        produtosPrincipal.AddRange(produtosSecundaria);
+        //for (int i = 0; produtosSecundaria.Count > i; i++) { produtosPrincipal.Add(produtosSecundaria[i]); };
+
+        Console.WriteLine("Lista consolidada:");
+        foreach (string produto in produtosPrincipal) { Console.WriteLine(produto); }
+    }
+}

@@ -25,9 +25,11 @@ class tester
         //Teste CircunferenceCalc 
         course.CircunferenceCalc(5.0m);
         */
+
+        /*/Course02
         var course2 = new Course02();
 
-        /*/Teste BalanceAnalysis
+        Teste BalanceAnalysis
         course2.BalanceAnalysis(-26.75m);
 
         //Teste ProductClassification 
@@ -54,7 +56,31 @@ class tester
         //Teste BookClassification 
         course2.BookClassification();
 
-        //Teste AutenticationAcess */
+        //Teste AutenticationAcess
         course2.AutenticationAcess();
+        */
+
+        var course3 = new Course03();
+
+        /*/Teste Donations
+        course3.Donations();
+
+        //Teste  EventParticipants
+        course3.EventParticipants();
+
+        //Teste SecretPassword
+        course3.SecretPassword();
+
+        //Teste GameScore 
+        course3.GameScore();
+
+        //Teste SecretMessage 
+        course3.SecretMessage();
+
+        //Teste SorteioBeneficiente
+        course3.SorteioBeneficiente();
+
+        //Teste.ListaDeProdutos */
+        course3.ListaDeProdutos();
     }
 }
