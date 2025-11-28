@@ -2,7 +2,7 @@ class tester
 {
     static void Main()
     {
-        /* //Course01
+        /*/Course01
         var course = new Course01();
         //Teste CalculateAge
         course.CalculateAge(2000);
@@ -26,7 +26,7 @@ class tester
         course.CircunferenceCalc(5.0m);
         */
 
-        /*/Course02
+        /* /Course02
         var course2 = new Course02();
 
         Teste BalanceAnalysis
@@ -60,9 +60,10 @@ class tester
         course2.AutenticationAcess();
         */
 
+        /* /Course03
         var course3 = new Course03();
 
-        /*/Teste Donations
+        //Teste Donations
         course3.Donations();
 
         //Teste  EventParticipants
@@ -80,7 +81,57 @@ class tester
         //Teste SorteioBeneficiente
         course3.SorteioBeneficiente();
 
-        //Teste.ListaDeProdutos */
+        //Teste.ListaDeProdutos 
         course3.ListaDeProdutos();
+
+        //Teste NotasFinais 
+        course3.NotasFinais();
+
+        //Teste Inventario
+        course3.Inventario();
+
+        //Teste TarefasDaSprint
+        course3.TarefasDaSprint();
+        */
+
+        /* /Course04 
+        var course4 = new Course04();
+
+        /*
+        //Teste PalavraChave
+        course4.PalavraChave();
+
+        //Teste ContadorDeCaracteres
+        course4.ContadorDeCaracteres();
+        
+        //Teste SubstituirPalavra
+        course4.SubstituirPalavra();
+
+        //Teste DivisaoDeTexto 
+        course4.DivisaoDeTexto();
+
+        //Teste TransformandoEmMaiuscula 
+        course4.TransformandoEmMaiusculas();
+
+        //Teste RelatoriosDeEntregas 
+        course4.RelatoriosDeEntregas();
+
+        //Teste ValidadorDeCupons 
+        course4.ValidadorDeCupons();
+
+        //Teste ExtracaoDeTexto 
+        course4.ExtracaoDeTexto();
+
+        //Teste ExtracaoDeEspaco 
+        course4.ExtracaoDeEspaco(); 
+
+        //Teste ValidacaoDeData 
+        course4.ValidacaoDeData();
+
+        //Teste ValidacaoDeLinks 
+        course4.ValidacaoDeLinks();
+        */
+
+        var course5 = new Course05();
     }
 }

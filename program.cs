@@ -1,4 +1,6 @@
-﻿using System.Net.Security;
+﻿using System.IO.Pipes;
+using System.Net.Security;
+using System.Text.RegularExpressions;
 
 class Course01
 {
@@ -437,4 +439,252 @@ class Course03
         Console.WriteLine("Lista consolidada:");
         foreach (string produto in produtosPrincipal) { Console.WriteLine(produto); }
     }
+
+    public void NotasFinais()
+    {
+        Dictionary<string, decimal> NotasAlunos = new Dictionary<string, decimal>();
+        NotasAlunos.Add("Ana", 8.75m);
+        NotasAlunos.Add("Bruno", 6.90m);
+        NotasAlunos.Add("Clara", 9.25m);
+
+        foreach (var notas in NotasAlunos)
+        {
+            Console.WriteLine($"Aluno: {notas.Key} - Nota: {notas.Value}");
+        }
+    }
+
+    public void Inventario()
+    {
+        Dictionary<int, string> Mochila = new Dictionary<int, string>
+        {
+            {1,"Espada Longa" },
+            {2,"Arco Curto" },
+            {3,"Escudo de Ferro" }
+        };
+
+        Console.WriteLine("Itens no inventário inicial:");
+        foreach (var itens in Mochila)
+        {
+            Console.WriteLine($"ID: {itens.Key} - {itens.Value}");
+        }
+
+        Mochila.Remove(2);
+        Mochila.Add(4, "Poção de Vida");
+        Console.WriteLine("----------------------------");
+
+        Console.WriteLine("Itens no inventário atualizado:");
+        foreach (var itens in Mochila)
+        {
+            Console.WriteLine($"ID: {itens.Key} - {itens.Value}");
+        }
+    }
+
+    public void TarefasDaSprint()
+    {
+        Dictionary<string, string> tarefas = new Dictionary<string, string>
+        {
+            {"Refatorar módulo de login", "Ana" },
+            {"Testar API de pagamentos", "Pedro" }
+        };
+
+        tarefas.Clear();
+
+        tarefas.Add("Implementar autenticação OAuth", "João");
+        tarefas.Add("Otimizar consultas SQL", "Maria");
+        tarefas.Add("Atualizar documentação", "Carlos");
+
+        Console.WriteLine("Tarefas do próximo sprint:");
+        foreach (var tarefa in tarefas)
+        {
+            Console.WriteLine($"- {tarefa.Key}: {tarefa.Value}");
+        }
+    }
+}
+
+class Course04
+{
+    public void PalavraChave()
+    {
+        string palavraChave = "C#";
+        Console.WriteLine("Digite um texto:");
+        string textoInformado = Console.ReadLine()!;
+
+        if (textoInformado.Contains(palavraChave))
+        {
+            Console.WriteLine("A palavra - chave foi encontrada na pesquisa.");
+        }
+        else
+        {
+            Console.WriteLine("A palavra - chave não foi encontrada na pesquisa.");
+        }
+    }
+
+    public void ContadorDeCaracteres()
+    {
+        Console.Write("Digite uma frase: ");
+        string textoInformado = Console.ReadLine()!;
+
+        int caracteres = textoInformado.Length;
+
+        Console.WriteLine($"A frase contém {caracteres} caracteres.");
+    }
+
+    public void SubstituirPalavra()
+    {
+        Console.WriteLine("Digite uma frase:");
+        string textoInformado = Console.ReadLine()!;
+
+        Console.WriteLine("Qual palavra você quer substituir?");
+        string palavraEscolhida = Console.ReadLine()!;
+
+        Console.WriteLine("Por qual palavra?");
+        string novaPalavra = Console.ReadLine()!;
+
+        string novoTexto = textoInformado.Replace(palavraEscolhida, novaPalavra);
+        Console.WriteLine(novoTexto);
+    }
+
+    public void DivisaoDeTexto()
+    {
+        string textoLog = "2025-03-25,Erro,Arquivo não encontrado";
+
+        string data = textoLog.Split(',')[0];
+        string tipo = textoLog.Split(',')[1];
+        string mensagem = textoLog.Split(',')[2];
+
+        Console.WriteLine($"Data: {data}");
+        Console.WriteLine($"Tipo de erro: {tipo}");
+        Console.WriteLine($"Mensagem: {mensagem}");
+    }
+
+    public void TransformandoEmMaiusculas()
+    {
+        Console.WriteLine("Digite o alerta:");
+        string texto = Console.ReadLine()!;
+
+        Console.WriteLine(texto.ToUpper());
+    }
+
+    public void RelatoriosDeEntregas()
+    {
+        Console.WriteLine("Digite o nome do cliente:");
+        string nome = Console.ReadLine()!;
+
+        Console.WriteLine("Digite o endereço:");
+        string endereco = Console.ReadLine()!;
+
+        Console.WriteLine("Digite o valor do frete:");
+        decimal frete = decimal.Parse(Console.ReadLine()!);
+
+        Console.WriteLine("Digite a data de entrega:");
+        string data = Console.ReadLine()!;
+
+        string formato = $@"
+        Cliente:           {nome}
+        Endereço:          {endereco}
+        Valor do frete: R$ {frete}
+        Data:              {data}";
+
+        Console.WriteLine("\n========== RELATÓRIO DE ENTREGA ==========");
+        Console.WriteLine(formato);
+        Console.WriteLine("==========================================");
+
+    }
+
+    /*/Regex
+
+    string padraoCPF = @"^\d{3}\.\d{3}\.\d{3}-\d{2}$";
+    string padraoCNPJ = @"^\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}$";
+    string padraoTelefone = @"^\(\d{2}\)\d{4,5}-\d{4}$";
+    string padraoEmail = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+    */
+
+    public void ValidadorDeCupons()
+    {
+        Console.WriteLine("Digite o código do cupom:");
+        string cupom = Console.ReadLine()!;
+
+        string validador = @"^[0-9]+$";
+
+
+        if (Regex.IsMatch(cupom, validador))
+        {
+            Console.WriteLine("O código é válido");
+        }
+        else 
+        { 
+            Console.WriteLine("O código não é válido."); 
+        }
+    }
+
+    public void ExtracaoDeTexto()
+    {
+        Console.WriteLine("Digite o texto do recibo:");
+        string notaFiscal = Console.ReadLine()!;
+
+        string validador = @"R\$\s*([0-9]+,[0-9]{2})";
+
+        string valorExtraido = Regex.Match(notaFiscal, validador).Groups[1].Value;
+
+        Console.WriteLine($"Valor encontrado: R$ {valorExtraido}");
+    }
+
+    public void ExtracaoDeEspaco()
+    {
+        Console.WriteLine("Digite sua frase:");
+        string frase = Console.ReadLine()!;
+        string validador = @"\s+";
+
+        string fraseAjustada = Regex.Replace(frase, validador, " ").Trim();
+        Console.WriteLine($"Texto limpo: {fraseAjustada}");
+    }
+
+    public void ValidacaoDeData()
+    {
+        Console.WriteLine("Digite a data (dd/mm/aaaa):");
+        string data = Console.ReadLine()!;
+        string validador = @"^([0-9]{2})/([0-9]{2})/([0-9]{4})$";
+
+        int dia = int.Parse(Regex.Match(data, validador).Groups[1].Value);
+        int mes = int.Parse(Regex.Match(data, validador).Groups[2].Value);
+        int ano = int.Parse(Regex.Match(data, validador).Groups[3].Value);
+
+        int anoAtual = DateTimeOffset.Now.Year;
+
+        if (dia >= 1 && dia <= 31)
+        {
+            if ( mes >= 1 &&  mes <= 12)
+            {
+                if( ano >= 1800 && ano <= anoAtual)
+                {
+                    Console.WriteLine("A data está no formato correto.");
+                } else
+                {
+                    Console.WriteLine("Formato inválido! Use dd/mm/aaaa.");
+                }
+            } else
+            {
+                Console.WriteLine("Formato inválido! Use dd/mm/aaaa.");
+            }
+        } else
+        {
+            Console.WriteLine("Formato inválido! Use dd/mm/aaaa.");
+        }
+    }
+
+    public void ValidacaoDeLinks()
+    {
+        Console.WriteLine("Digite o texto:");
+        string links = Console.ReadLine()!;
+        string validador = @"https?://[^\s]+";
+
+        string linkValidado = Regex.Replace(links, validador, "[LINK]");
+
+        Console.WriteLine(linkValidado);
+    }
+}
+
+class Course05
+{
+
 }
