@@ -1,0 +1,1 @@
+﻿Musicas cadastro = new Musicas();
