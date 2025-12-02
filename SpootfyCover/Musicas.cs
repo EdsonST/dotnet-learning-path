@@ -1,21 +1,22 @@
 ﻿class Musicas
 {
-    public int idBanda { get; set; }
-    public string nomeBanda { get; set; }
-    public string nomeArtista { get; set; }
-    public string estilo {  get; set; }
-    public int ducacao { get; set; }
-    public bool disponibilidade { get; set; }
+    public int IdBanda { get; set; }
+    public string NomeBanda { get; set; }
+    public string NomeArtista { get; set; }
+    public string Estilo {  get; set; }
+    public int Ducacao { get; set; }
+    public bool Disponibilidade { get ; set ; }
+    public string FichaTecnica => $"A {NomeBanda} é interpretada pelo {NomeArtista} no estilo {Estilo}";
 
     public void ExibirCadastro()
     {
-        Console.WriteLine($"ID: {idBanda}");
-        Console.WriteLine($"Banda: {nomeBanda}");
-        Console.WriteLine($"Artista: {nomeArtista}");
-        Console.WriteLine($"Estilo Musical: {estilo}");
-        Console.WriteLine($"Duração da Música: {ducacao}min");
+        Console.WriteLine($"ID: {IdBanda}");
+        Console.WriteLine($"Banda: {NomeBanda}");
+        Console.WriteLine($"Artista: {NomeArtista}");
+        Console.WriteLine($"Estilo Musical: {Estilo}");
+        Console.WriteLine($"Duração da Música: {Ducacao}min");
 
-        if (disponibilidade)
+        if (Disponibilidade)
         {
             Console.WriteLine($"Disponível em seu plano !");
         }

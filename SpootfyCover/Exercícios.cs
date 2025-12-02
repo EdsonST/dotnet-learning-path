@@ -1,20 +1,20 @@
 ﻿class ContaBancaria
 {
-    public int numeroIndicador { get; set; }
-    public string titular {  get; set; }
-    public double saldo { get; set; }
-    public int senha { get; set; }
+    public int NumeroIndicador { get; set; }
+    public string Titular {  get; set; }
+    public double Saldo { get; set; }
+    public int Senha { get; set; }
 
     public void ExibirConta()
     {
         Console.Write($"Informe a senha de acesso: ");
         int identificacao = int.Parse(Console.ReadLine()!);
-        if (identificacao == senha)
+        if (identificacao == Senha)
         {
-            Console.WriteLine($"Olá {titular},");
-            Console.WriteLine($"Código da conta: {numeroIndicador}");
-            Console.WriteLine($"Titular da conta: {titular}");
-            Console.WriteLine($"Seu saldo atual é de: {saldo}");
+            Console.WriteLine($"Olá {Titular},");
+            Console.WriteLine($"Código da conta: {NumeroIndicador}");
+            Console.WriteLine($"Titular da conta: {Titular}");
+            Console.WriteLine($"Seu saldo atual é de: {Saldo}");
         }
         else
         {
@@ -26,16 +26,41 @@
 
 class Carro
 {
-    public void acelerar()
+    public string Acelerar => $"Carro Acelerando...";
+    public string Frear => $"Carro Desacelerando...";
+    public string Buzinar => $"Bi! Bi!";
+    private int _anoDoVeiculo;
+    public int AnoDoVeiculo 
     {
-        Console.WriteLine("Carro Acelerando...");
+        get => _anoDoVeiculo;
+        set => _anoDoVeiculo = (value >= 1960 &&  value <= 2023) 
+            ? value 
+            : throw new ArgumentOutOfRangeException(nameof(AnoDoVeiculo), "Ano de fabricação inválido, insira o valor entre 1960 á 2023" );
     }
-    public void frear() 
+    public string ModeloDoVeiculo { get; set; }
+    public string Fabricante { get; set; }
+    public string DescricaoDetalhada => $"O veículo é fabricado por {Fabricante}, modelo {ModeloDoVeiculo} e o ano de Fabricação é {AnoDoVeículo}";
+}
+
+class Produto
+{
+    public string Nome { get; set; }
+    public string Marca { get; set; }
+    private decimal _preco;
+    public decimal Preco 
     {
-        Console.WriteLine("Carro Desacelerando...");
+        get => _preco;
+        set => _preco = (value >= 0)
+            ? value
+            : throw new ArgumentOutOfRangeException(nameof(Preco), "Preço não pode ser negativo");
     }
-    public void buzinar() 
-    { 
-        Console.WriteLine("Bi ! Bi !");
+    private int _estoque;
+    public int Estoque 
+    {
+        get => _estoque;
+        set => _estoque = (value >= 0)
+            ? value
+            : throw new ArgumentOutOfRangeException(nameof(Estoque), "Estoque não pode ser negativo");
     }
+    public string Descritivo => $"O {Nome} da Marca {Marca} está com o preço atual de R${Preco} e seu estoque é {Estoque}";
 }
