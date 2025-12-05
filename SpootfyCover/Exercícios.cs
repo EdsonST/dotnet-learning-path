@@ -25,26 +25,42 @@
 
 class Titular
 {
-    public string Nome { get; set; }
+    public Titular(string nome, string cpf, string endereco)
+    {
+        Nome = nome;
+        Cpf = cpf;
+        Endereco = endereco;
+    }
+
+    public string Nome { get;}
+    public string Cpf { get; }
+    public string Endereco { get; }
 }
 
 class Conta
 {
-    public Titular Titular { get; set; }
-    public string Agencia { get; set; }
-    public string NumeroConta { get; set; }
-    public decimal Saldo { get; set; }
-    public decimal Limite { get; set; }
-
-    public string InfoDetalhada()
+    public Conta(Titular titular, int agencia, int numeroConta, double saldo, double limite)
     {
-        return $"Titular: {Titular.Nome}\n" +
-               $"Agência: {Agencia}\n" +
-               $"Conta: {NumeroConta}\n" +
-               $"Saldo: {Saldo}\n" +
-               $"Limite: {Limite}";
+        Titular = titular;
+        Agencia = agencia;
+        NumeroConta = numeroConta;
+        Saldo = saldo;
+        Limite = limite;
     }
+
+    public Titular Titular { get; }
+    public int Agencia { get; set; }
+    public int NumeroConta { get; set; }
+    public double Saldo { get; set; }
+    public double Limite { get; set; }
+
+    public string Informacoes => $"Conta nº {NumeroConta}, Agência {Agencia}, Titular: {Titular.Nome} - Saldo: {Saldo}";
 }
+
+/* intanciando
+var titular = new Titular("Edson","123.456.789-00","Rua Teste SBC, 100");
+var conta = new Conta(titular,001,1234,2500.0,500.0);
+*/
 
 class Carro
 {
@@ -155,4 +171,42 @@ class CardapioItem
 {
     public string Nome { get; set; }
     public decimal Preco { get; set; }
+}
+
+class Jogo
+{
+    public Jogo(string nome)
+    {
+        Nome = nome;
+    }
+
+    public string Nome { get; }
+}
+
+class CatalogoDeJogos
+{
+    public CatalogoDeJogos()
+    {
+        Jogos = new List<Jogo>();
+    }
+
+    private List<Jogo> Jogos;
+
+    public void AdicionarJogo(Jogo jogo)
+    {
+        Jogos.Add(jogo);
+    }
+
+    public void RemoverJogo(Jogo jogo)
+    {
+        Jogos.Remove(jogo);
+    }
+
+    public void ListarJogos()
+    {
+        foreach (var jogo in Jogos)
+        {
+            Console.WriteLine(jogo.Nome);
+        }
+    }
 }
